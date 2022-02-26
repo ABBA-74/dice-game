@@ -1,0 +1,142 @@
+/* Import font family */
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
+
+/* Déclaration variables */
+:root {
+  /*    background: rgb(255,255,255); */
+  --linear-gradient-player-1: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgb(1, 24, 29) 50%,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  --linear-gradient-player-2: linear-gradient(
+    -90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgb(1, 24, 29) 50%,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(0, 0, 0, 1) 100%
+  );
+
+  --color-orange: #d64444;
+  --color-yellow: #fcf00d;
+  --color-grey: #7e8d85;
+  --color-light-grey: #f0ece7;
+}
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  font-family: "Lato", sans-serif;
+  color: var(--color-light-grey);
+}
+h1 {
+  font-size: 2rem !important;
+  letter-spacing: 0.39rem;
+  font-weight: 900;
+  color: var(--color-grey);
+  text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0),
+    -0.1rem -0.1rem 0.3rem #f8f7ff59;
+}
+.new-game-action,
+#roll-action,
+#hold-action {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--color-yellow);
+}
+#label-player-1,
+#label-player-2 {
+  color: var(--color-grey);
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+#score-player-1,
+#score-player-2 {
+  font-size: 4rem;
+  color: var(--color-orange);
+  font-weight: 300;
+}
+
+.current-wrapper {
+  width: 7.8rem;
+  min-height: 5.3rem;
+  background-color: var(--color-orange);
+  border-radius: 1.9rem;
+  background: #1d1f214f;
+  box-shadow: 0.4rem 0.4rem 0.9rem #000, -0.4rem -0.4rem 0.9rem #9590c42a;
+}
+
+.current-label {
+  color: var(--color-grey);
+}
+#current-score-p1,
+#current-score-p2 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  /* color: rgb(240, 236, 231); */
+}
+
+#dice {
+  font-size: 3rem;
+  height: 5rem;
+  width: 5rem;
+  background-color: rgb(119, 121, 121);
+}
+
+.bi {
+  color: var(--color-orange);
+  cursor: pointer;
+}
+
+@media screen and (min-width: 568px) {
+  .new-game-action,
+  #roll-action,
+  #hold-action {
+    font-size: 1.5rem;
+  }
+  #label-player-1,
+  #label-player-2 {
+    font-size: 2rem;
+  }
+  .current-wrapper {
+    width: 10rem;
+  }
+  #score-player-1,
+  #score-player-2 {
+    font-size: 3rem;
+  }
+  #current-score-p1,
+  #current-score-p2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 2.8rem !important;
+  }
+  #label-player-1,
+  #label-player-2 {
+    font-size: 2.5rem;
+  }
+  #score-player-1,
+  #score-player-2 {
+    font-size: 4rem;
+  }
+}
+
+.bg-player-1 {
+  background: var(--linear-gradient-player-1);
+}
+.bg-player-2 {
+  background: var(--linear-gradient-player-2);
+}
