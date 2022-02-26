@@ -6,7 +6,12 @@ export default class User {
     this.isPlaying = isPlaying;
   }
 
-  messageModalWinner() {
-    return `${this.name} is the Winner !!!`;
+  resetScore() {
+    this.roundScore = 0;
+    this.totalScore = 0;
+  }
+
+  isTheWinner() {
+    return this.totalScore >= 100;
   }
 }

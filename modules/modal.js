@@ -1,12 +1,10 @@
-export default function displayModal(modalElement, name) {
+export default function displayModal(player) {
+  const modalElement = document.getElementById("staticBackdrop");
   const modalMess = document.getElementById("modal-mess");
 
-  modalMess.textContent = `${name} is the Winner !!!`;
+  modalMess.textContent = `${player.name} is the Winner !!!`;
   const myModal = new bootstrap.Modal(modalElement, {
     keyboard: false,
   });
-  // myModal.toggle();
-  console.log(typeof myModal);
-  console.log(myModal);
   myModal.show();
 }

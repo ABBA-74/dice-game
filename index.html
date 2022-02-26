@@ -55,11 +55,32 @@
             class="current-wrapper d-flex flex-column justify-content-center align-items-center"
           >
             <div class="current-label">CURRENT</div>
-            <div id="current-score-p1"></div>
+            <div id="current-score-p1">0</div>
           </div>
         </div>
         <div class="order-1 order-sm-0 col-12 col-sm-4 flex-column text-center">
-          <div id="dice" class="my-5 mx-auto"></div>
+          <div id="dice-wrapper  " class="my-5 mx-auto">
+            <div class="dice mx-auto">
+              <div class="dice__face dice__face--1">
+                <img src="images/dice-1.svg" alt="face 1 du dé" srcset="" />
+              </div>
+              <div class="dice__face dice__face--2">
+                <img src="images/dice-2.svg" alt="face 2 du dé" srcset="" />
+              </div>
+              <div class="dice__face dice__face--3">
+                <img src="images/dice-3.svg" alt="face 3 du dé" srcset="" />
+              </div>
+              <div class="dice__face dice__face--4">
+                <img src="images/dice-4.svg" alt="face 4 du dé" srcset="" />
+              </div>
+              <div class="dice__face dice__face--5">
+                <img src="images/dice-5.svg" alt="face 5 du dé" srcset="" />
+              </div>
+              <div class="dice__face dice__face--6">
+                <img src="images/dice-6.svg" alt="face 6 du dé" srcset="" />
+              </div>
+            </div>
+          </div>
           <div id="roll-action" class="mb-3">
             <span
               ><i id="roll-action__btn" class="bi bi-arrow-repeat pe-1"></i
@@ -82,7 +103,7 @@
             class="current-wrapper d-flex flex-column justify-content-center align-items-center"
           >
             <div class="current-label">CURRENT</div>
-            <div id="current-score-p2"></div>
+            <div id="current-score-p2">0</div>
           </div>
         </div>
       </div>
@@ -112,15 +133,13 @@
               CONGRATULATIONS
             </h5>
             <button
-              type="button bg-white"
+              type="button"
               class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
             ></button>
           </div>
-          <div id="modal-mess" class="modal-body text-white">
-            Player 1 is the winner !!!
-          </div>
+          <div id="modal-mess" class="modal-body text-white"></div>
           <div class="modal-footer">
             <button
               type="button"
