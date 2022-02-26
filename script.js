@@ -1,4 +1,6 @@
 import User from "./modules/user.js";
+import displayModal from "./modules/modal.js";
+import displayActivePlayer from "./modules/displayActivePlayer.js";
 
 const diceContainer = document.querySelector("#dice");
 const rollDiceBtn = document.querySelector("#roll-action__btn");
@@ -8,6 +10,7 @@ const roundScorePlayer2 = document.querySelector("#current-score-p2");
 const totalScorePlayer1 = document.querySelector("#score-player-1");
 const totalScorePlayer2 = document.querySelector("#score-player-2");
 const newGameBtn = document.querySelector("#new-game-btn");
+const modalElement = document.getElementById("staticBackdrop");
 
 const init = () => {
   // set contents of html at 0
@@ -24,7 +27,7 @@ const init = () => {
   player2.totalScore = 0;
   player2.isPlaying = false;
 
-  displayPlayerActive();
+  displayActivePlayer(player1, player2);
 };
 
 // Function init after each round
@@ -40,39 +43,32 @@ const initRound = () => {
   player1.roundScore = 0;
   player2.roundScore = 0;
 
-  displayPlayerActive();
-};
-
-// Function used to visualize the player round by changing bg of body
-const displayPlayerActive = () => {
-  player1.isPlaying &&
-    (document.body.classList.add("bg-player-1"),
-    document.body.classList.remove("bg-player-2"));
-  player2.isPlaying &&
-    (document.body.classList.add("bg-player-2"),
-    document.body.classList.remove("bg-player-1"));
+  displayActivePlayer(player1, player2);
 };
 
 // Function used to determinate the dice value
-const roll_dice = () => {
+const rollDice = () => {
   let diceValue = Math.floor(Math.random() * 6 + 1);
   return diceValue;
 };
 
 // Function used to see which one is the winner
 const checkEndGame = () => {
-  player1.totalScore >= 100 && (console.log("player 1 win"), init());
-  player2.totalScore >= 100 && (console.log("player 2 win"), init());
+  player1.totalScore >= 100 &&
+    (displayModal(modalElement, player1.name), init());
+  player2.totalScore >= 100 &&
+    (displayModal(modalElement, player2.name), init());
 };
 
 // initialization players
-let player1 = new User();
-let player2 = new User();
+let player1 = new User("Player 1");
+let player2 = new User("Player 2");
+
 init();
 
 // EventListiner actived after each click on the Roll Dice Action
 rollDiceBtn.addEventListener("click", () => {
-  let diceValue = roll_dice();
+  let diceValue = rollDice();
   diceContainer.textContent = diceValue.toString();
   if (diceValue !== 1) {
     if (player1.isPlaying) {

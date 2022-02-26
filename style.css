@@ -97,6 +97,24 @@ h1 {
   cursor: pointer;
 }
 
+/* Modal */
+.modal-title {
+  color: var(--color-yellow);
+  font-weight: 300;
+}
+.modal-header {
+  border-bottom-color: var(--color-grey);
+}
+.modal-footer {
+  border-top: none;
+}
+/* Modal close button */
+.btn-close {
+  filter: invert(97%) sepia(2%) saturate(667%) hue-rotate(346deg)
+    brightness(101%) contrast(88%);
+  opacity: 1;
+}
+
 @media screen and (min-width: 568px) {
   .new-game-action,
   #roll-action,
