@@ -38,6 +38,11 @@ body {
   font-family: "Lato", sans-serif;
   color: var(--color-light-grey);
   background-color: #000;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 h1 {
   font-size: 2rem !important;
@@ -53,6 +58,7 @@ h1 {
   font-size: 1.5rem;
   font-weight: 300;
   color: var(--color-yellow);
+  cursor: pointer;
 }
 #label-player-1,
 #label-player-2 {
@@ -88,7 +94,6 @@ h1 {
 
 .bi {
   color: var(--color-orange);
-  cursor: pointer;
 }
 
 /* Modal */
@@ -157,7 +162,7 @@ i[class*=" bi-dice"] {
   bottom: 0;
   left: 0;
   right: 0;
-  border: 2px solid rgb(117, 117, 117);
+  border: 3px solid rgba(117, 117, 117, 0.73);
   background: linear-gradient(145deg, #1c1d1c3b, #87978e73);
   box-shadow: 10px 10px 30px #232423, -10px -10px 30px #2a2b2b;
 }

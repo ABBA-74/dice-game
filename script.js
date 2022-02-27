@@ -4,13 +4,15 @@ import displayActivePlayer from "./modules/displayActivePlayer.js";
 import rollDice from "./modules/rollDice.js";
 
 const diceContainer = document.querySelector("#dice");
-const rollDiceBtn = document.querySelector("#roll-action__btn");
-const holdBtn = document.querySelector("#hold-action__btn");
+const rollDiceBtn = document.querySelector("#roll-action");
+const holdBtn = document.querySelector("#hold-action");
 const roundScorePlayer1 = document.querySelector("#current-score-p1");
 const roundScorePlayer2 = document.querySelector("#current-score-p2");
 const totalScorePlayer1 = document.querySelector("#score-player-1");
 const totalScorePlayer2 = document.querySelector("#score-player-2");
 const newGameBtn = document.querySelector("#new-game-btn");
+
+let isDiceRolling = false;
 
 const init = () => {
   // Set score contents at 0 inside html
@@ -63,32 +65,36 @@ init();
 
 // EventListiner actived after each click on the Roll Dice Action
 rollDiceBtn.addEventListener("click", () => {
-  //// Timemout of dice animation added - 550ms
-  setTimeout(() => {
+  if (!isDiceRolling) {
+    isDiceRolling = true;
+    //// Timemout of dice animation added - 550ms
     let diceValue = rollDice();
-    console.log("diceValue >>> ", diceValue);
-    // diceContainer.textContent = diceValue.toString();
-    if (diceValue !== 1) {
-      if (player1.isPlaying) {
-        player1.roundScore += diceValue;
-        roundScorePlayer1.textContent = player1.roundScore.toString();
+    setTimeout(() => {
+      console.log("diceValue >>> ", diceValue);
+      // diceContainer.textContent = diceValue.toString();
+      if (diceValue !== 1) {
+        if (player1.isPlaying) {
+          player1.roundScore += diceValue;
+          roundScorePlayer1.textContent = `${player1.roundScore}`;
+        }
+        if (player2.isPlaying) {
+          player2.roundScore += diceValue;
+          roundScorePlayer2.textContent = `${player2.roundScore}`;
+        }
+      } else {
+        initRound();
       }
-      if (player2.isPlaying) {
-        player2.roundScore += diceValue;
-        roundScorePlayer2.textContent = player2.roundScore.toString();
-      }
-    } else {
-      initRound();
-    }
-  }, 650);
+      isDiceRolling = false;
+    }, 650);
+  }
 });
 
 // EventListiner actived after each click on the Hold Action
 holdBtn.addEventListener("click", () => {
   player1.isPlaying ? (player1.totalScore += player1.roundScore) : 0;
   player2.isPlaying ? (player2.totalScore += player2.roundScore) : 0;
-  totalScorePlayer1.textContent = player1.totalScore.toString();
-  totalScorePlayer2.textContent = player2.totalScore.toString();
+  totalScorePlayer1.textContent = `${player1.totalScore}`;
+  totalScorePlayer2.textContent = `${player2.totalScore}`;
   checkEndGame();
   initRound();
 });
