@@ -16,7 +16,6 @@ export default function rollDice() {
 
   setTimeout(() => {
     let visibleFaceDice = document.querySelector(`.dice__face--${diceValue}`);
-    console.log("tttttttt");
     if (diceValue === 1) {
       visibleFaceDice.style.border = "2px solid red";
       visibleFaceDice.style.boxShadow =

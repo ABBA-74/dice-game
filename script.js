@@ -3,7 +3,7 @@ import displayModal from "./modules/modal.js";
 import displayActivePlayer from "./modules/displayActivePlayer.js";
 import rollDice from "./modules/rollDice.js";
 
-const diceContainer = document.querySelector("#dice");
+// const diceContainer = document.querySelector("#dice");
 const rollDiceBtn = document.querySelector("#roll-action");
 const holdBtn = document.querySelector("#hold-action");
 const roundScorePlayer1 = document.querySelector("#current-score-p1");
@@ -24,8 +24,8 @@ const init = () => {
   // initialization of players
   player1.resetScore();
   player2.resetScore();
-  player2.isPlaying = false;
   player1.isPlaying = true;
+  player2.isPlaying = false;
 
   document.querySelectorAll(".dice__face").forEach((el) => {
     el.style.border = "3px solid var(--color-light-grey)";
@@ -39,28 +39,26 @@ const init = () => {
 const initRound = () => {
   roundScorePlayer1.textContent = "0";
   roundScorePlayer2.textContent = "0";
-
   // Toggle players status
   player1.isPlaying = !player1.isPlaying;
   player2.isPlaying = !player2.isPlaying;
-
   // Set round score at 0 for each players
   player1.roundScore = 0;
   player2.roundScore = 0;
-
   displayActivePlayer(player1, player2);
 };
 
 // Function used to see which one is the winner
-const checkEndGame = () => {
+const isEndGame = () => {
+  let res = player2.isTheWinner() || player1.isTheWinner();
   player1.isTheWinner() && (displayModal(player1), init());
   player2.isTheWinner() && (displayModal(player2), init());
+  return res;
 };
 
 // initialization players
 let player1 = new User("Player 1");
 let player2 = new User("Player 2");
-
 init();
 
 // EventListiner actived after each click on the Roll Dice Action
@@ -70,8 +68,6 @@ rollDiceBtn.addEventListener("click", () => {
     //// Timemout of dice animation added - 550ms
     let diceValue = rollDice();
     setTimeout(() => {
-      console.log("diceValue >>> ", diceValue);
-      // diceContainer.textContent = diceValue.toString();
       if (diceValue !== 1) {
         if (player1.isPlaying) {
           player1.roundScore += diceValue;
@@ -90,14 +86,17 @@ rollDiceBtn.addEventListener("click", () => {
 });
 
 // EventListiner actived after each click on the Hold Action
-holdBtn.addEventListener("click", () => {
-  player1.isPlaying ? (player1.totalScore += player1.roundScore) : 0;
-  player2.isPlaying ? (player2.totalScore += player2.roundScore) : 0;
-  totalScorePlayer1.textContent = `${player1.totalScore}`;
-  totalScorePlayer2.textContent = `${player2.totalScore}`;
-  checkEndGame();
-  initRound();
-});
+holdBtn.addEventListener(
+  "click",
+  () => {
+    player1.isPlaying ? (player1.totalScore += player1.roundScore) : 0;
+    player2.isPlaying ? (player2.totalScore += player2.roundScore) : 0;
+    totalScorePlayer1.textContent = `${player1.totalScore}`;
+    totalScorePlayer2.textContent = `${player2.totalScore}`;
+    !isEndGame() && initRound();
+  },
+  true
+);
 
 newGameBtn.addEventListener("click", () => {
   init();

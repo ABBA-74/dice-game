@@ -20,7 +20,7 @@
   );
 
   --color-orange: #d64444;
-  --color-yellow: #fcf00d;
+  --color-yellow: rgb(253, 241, 13);
   --color-grey: #7e8d85;
   --color-light-grey: #f0ece7;
 }
@@ -59,13 +59,48 @@ h1 {
   font-weight: 300;
   color: var(--color-yellow);
   cursor: pointer;
+  transition: text-shadow 0.3s ease-in-out;
+}
+.new-game-action:hover,
+.new-game-action:focus,
+#roll-action:hover,
+#roll-action:focus,
+#hold-action:hover,
+#hold-action:focus {
+  text-shadow: 0px 0px 5px rgba(253, 241, 13, 0.705),
+    0px 0px 15px rgba(253, 241, 13, 0.568),
+    0px 0px 25px rgba(253, 241, 13, 0.39);
 }
 #label-player-1,
 #label-player-2 {
   color: var(--color-grey);
   font-size: 1.8rem;
   font-weight: 300;
+  /* animation: animActiveLabel 2s forwards cubic-bezier(0.17, 0.67, 0.52, 1.71); */
 }
+#label-player-2.active {
+  color: var(--color-yellow);
+  /* animation: animActiveLabel 3s forwards ease-out; */
+}
+#label-player-1.active {
+  color: var(--color-yellow);
+}
+#label-player-1.active,
+#label-player-2.active {
+  animation: animActiveLabel 0.5s forwards cubic-bezier(0.17, 0.67, 0.52, 1.71);
+}
+
+@keyframes animActiveLabel {
+  from {
+    opacity: 0;
+    transform: translate(0, 45px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
 #score-player-1,
 #score-player-2 {
   font-size: 4rem;
