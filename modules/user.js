@@ -12,6 +12,6 @@ export default class User {
   }
 
   isTheWinner() {
-    return this.totalScore >= 100;
+    return this.totalScore >= 10;
   }
 }
