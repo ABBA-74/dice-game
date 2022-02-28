@@ -3,21 +3,22 @@
 
 /* Déclaration variables */
 :root {
-  /*    background: rgb(255,255,255); */
-  --linear-gradient-player-1: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgb(1, 24, 29) 50%,
-    rgba(0, 0, 0, 1) 50%,
-    rgba(0, 0, 0, 1) 100%
-  );
-  --linear-gradient-player-2: linear-gradient(
-    -90deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgb(1, 24, 29) 50%,
-    rgba(0, 0, 0, 1) 50%,
-    rgba(0, 0, 0, 1) 100%
-  );
+  --bg: radial-gradient(black 15%, transparent 16%) 0 0,
+    radial-gradient(black 15%, transparent 16%) 8px 8px,
+    radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 0 1px,
+    radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 8px 9px,
+    linear-gradient(
+      -90deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgb(1, 24, 29) 50%,
+      rgba(0, 0, 0, 1) 50%,
+      rgba(0, 0, 0, 1) 100%
+    );
+
+  --bx-shadow: 0.4rem 0.4rem 0.9rem #000, -0.4rem -0.4rem 0.9rem #9590c42a;
+
+  --txt-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0),
+    -0.1rem -0.1rem 0.3rem #f8f7ff59;
 
   --color-orange: #d64444;
   --color-yellow: rgb(253, 241, 13);
@@ -32,7 +33,7 @@
 }
 
 body {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   align-items: center;
   font-family: "Lato", sans-serif;
@@ -44,13 +45,36 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
+
+main {
+  min-height: 100vh;
+  width: 100%;
+  background: var(--bg);
+  background-color: #282828;
+  background-size: 6px 6px;
+}
+
+#wrapper-player-1,
+#wrapper-player-2 {
+  border-radius: 1.5rem;
+}
+/* Classes below used to change style according to the active player */
+.player-active {
+  animation: animPlayerRound 0.7s forwards ease-in-out;
+}
+
+@keyframes animPlayerRound {
+  100% {
+    box-shadow: var(--bx-shadow);
+  }
+}
+
 h1 {
-  font-size: 2rem !important;
+  font-size: 3.5rem !important;
   letter-spacing: 0.39rem;
   font-weight: 900;
   color: var(--color-grey);
-  text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0),
-    -0.1rem -0.1rem 0.3rem #f8f7ff59;
+  text-shadow: var(--txt-shadow);
 }
 .new-game-action,
 #roll-action,
@@ -76,26 +100,20 @@ h1 {
   color: var(--color-grey);
   font-size: 1.8rem;
   font-weight: 300;
-  /* animation: animActiveLabel 2s forwards cubic-bezier(0.17, 0.67, 0.52, 1.71); */
 }
-#label-player-2.active {
-  color: var(--color-yellow);
-  /* animation: animActiveLabel 3s forwards ease-out; */
-}
-#label-player-1.active {
-  color: var(--color-yellow);
-}
+
 #label-player-1.active,
 #label-player-2.active {
-  animation: animActiveLabel 0.5s forwards cubic-bezier(0.17, 0.67, 0.52, 1.71);
+  color: var(--color-yellow);
+  animation: animActiveLabel 0.7s forwards cubic-bezier(0.17, 0.67, 0.52, 1.71);
 }
 
 @keyframes animActiveLabel {
-  from {
+  0% {
     opacity: 0;
     transform: translate(0, 45px);
   }
-  to {
+  100% {
     opacity: 1;
     transform: translate(0, 0);
   }
@@ -106,6 +124,7 @@ h1 {
   font-size: 4rem;
   color: var(--color-orange);
   font-weight: 300;
+  text-shadow: var(--txt-shadow);
 }
 
 .current-wrapper {
@@ -114,7 +133,7 @@ h1 {
   background-color: var(--color-orange);
   border-radius: 1.9rem;
   background: #1d1f214f;
-  box-shadow: 0.4rem 0.4rem 0.9rem #000, -0.4rem -0.4rem 0.9rem #9590c42a;
+  box-shadow: var(--bx-shadow);
 }
 
 .current-label {
@@ -124,7 +143,14 @@ h1 {
 #current-score-p1,
 #current-score-p2 {
   font-size: 1.5rem;
+  color: var(--color-grey);
   font-weight: 300;
+  text-shadow: var(--txt-shadow);
+}
+
+#wrapper-player-1.player-active #current-score-p1,
+#wrapper-player-2.player-active #current-score-p2 {
+  color: var(--color-light-grey);
 }
 
 .bi {
@@ -132,6 +158,9 @@ h1 {
 }
 
 /* Modal */
+/* .modal {
+  z-index: 100;
+} */
 .modal-title {
   color: var(--color-yellow);
   font-weight: 300;
@@ -147,14 +176,6 @@ h1 {
   filter: invert(97%) sepia(2%) saturate(667%) hue-rotate(346deg)
     brightness(101%) contrast(88%);
   opacity: 1;
-}
-
-/* Classes below  used to change bg according to the player */
-.bg-player-1 {
-  background: var(--linear-gradient-player-1);
-}
-.bg-player-2 {
-  background: var(--linear-gradient-player-2);
 }
 
 /* Dice effect */

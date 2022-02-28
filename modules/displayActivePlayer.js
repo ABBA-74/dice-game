@@ -5,28 +5,24 @@ export default function displayActivePlayer(
   player2,
   isBeginningGame = false
 ) {
+  const wrapperPlayer1 = document.getElementById("wrapper-player-1");
+  const wrapperPlayer2 = document.getElementById("wrapper-player-2");
   const labelPlayer1 = document.querySelector("#label-player-1");
   const labelPlayer2 = document.querySelector("#label-player-2");
-  const roundScorePlayer1 = document.querySelector("#current-score-p1");
-  const roundScorePlayer2 = document.querySelector("#current-score-p2");
 
-  // Timemout of dice animation added (min 550ms) - Only on initRound
-  const tmpTimeOut = isBeginningGame ? 300 : 690;
+  // Timemout of dice animation added (min 550ms)
+  const tmpTimeOut = isBeginningGame ? 200 : 600;
   setTimeout(() => {
     if (player1.isPlaying) {
-      document.body.classList.add("bg-player-1");
-      document.body.classList.remove("bg-player-2");
-      roundScorePlayer1.style.color = "#f0ece7";
-      roundScorePlayer2.style.color = "#7e8d85";
+      wrapperPlayer1.classList.add("player-active");
+      wrapperPlayer2.classList.remove("player-active");
       labelPlayer1.classList.add("active");
       labelPlayer2.classList.remove("active");
     }
 
     if (player2.isPlaying) {
-      document.body.classList.add("bg-player-2");
-      document.body.classList.remove("bg-player-1");
-      roundScorePlayer1.style.color = "#7e8d85";
-      roundScorePlayer2.style.color = "#f0ece7";
+      wrapperPlayer1.classList.remove("player-active");
+      wrapperPlayer2.classList.add("player-active");
       labelPlayer1.classList.remove("active");
       labelPlayer2.classList.add("active");
     }

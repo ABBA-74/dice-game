@@ -50,10 +50,12 @@ const initRound = () => {
 
 // Function used to see which one is the winner
 const isEndGame = () => {
-  let res = player2.isTheWinner() || player1.isTheWinner();
-  player1.isTheWinner() && (displayModal(player1), init());
-  player2.isTheWinner() && (displayModal(player2), init());
-  return res;
+  if (player1.isTheWinner() || player2.isTheWinner()) {
+    displayModal(player1, player2);
+    init();
+    return true;
+  }
+  return false;
 };
 
 // initialization players

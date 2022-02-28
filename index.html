@@ -35,122 +35,133 @@
     <script type="module" src="./script.js"></script>
   </head>
   <body>
-    <div class="container mb-5">
-      <h1 class="text-center pt-3">DICE GAME</h1>
-      <div class="row">
-        <div class="col text-center my-5 new-game-action">
-          <span><i id="new-game-btn" class="bi bi-plus-circle pe-1"></i></span>
-          NEW GAME
-        </div>
-      </div>
-      <div
-        class="row d-flex flex-sm-row justify-content-center align-items-center"
-      >
-        <div
-          class="col-6 col-sm-4 d-flex flex-column justify-content-center align-items-center"
-        >
-          <div id="label-player-1">PLAYER 1</div>
-          <div id="score-player-1" class="mb-5">0</div>
-          <div
-            class="current-wrapper d-flex flex-column justify-content-center align-items-center"
-          >
-            <div class="current-label">CURRENT</div>
-            <div id="current-score-p1">0</div>
+    <main>
+      <div class="container mt-0 mt-sm-5 mb-5 px-4 px-sm-0">
+        <h1 class="text-center pt-5">DICE GAME</h1>
+        <div class="row">
+          <div class="col text-center my-5 new-game-action">
+            <span
+              ><i id="new-game-btn" class="bi bi-plus-circle pe-1"></i
+            ></span>
+            NEW GAME
           </div>
         </div>
-        <div class="order-1 order-sm-0 col-12 col-sm-4 flex-column text-center">
-          <div id="dice-wrapper  " class="my-5 mx-auto">
-            <div class="dice mx-auto">
-              <div class="dice__face dice__face--1">
-                <img src="images/dice-1.svg" alt="face 1 du dé" srcset="" />
-              </div>
-              <div class="dice__face dice__face--2">
-                <img src="images/dice-2.svg" alt="face 2 du dé" srcset="" />
-              </div>
-              <div class="dice__face dice__face--3">
-                <img src="images/dice-3.svg" alt="face 3 du dé" srcset="" />
-              </div>
-              <div class="dice__face dice__face--4">
-                <img src="images/dice-4.svg" alt="face 4 du dé" srcset="" />
-              </div>
-              <div class="dice__face dice__face--5">
-                <img src="images/dice-5.svg" alt="face 5 du dé" srcset="" />
-              </div>
-              <div class="dice__face dice__face--6">
-                <img src="images/dice-6.svg" alt="face 6 du dé" srcset="" />
-              </div>
+        <div
+          class="row d-flex flex-sm-row justify-content-center align-items-center"
+        >
+          <div
+            id="wrapper-player-1"
+            class="col-6 col-sm-4 d-flex flex-column justify-content-center align-items-center"
+          >
+            <div id="label-player-1" class="mt-3">PLAYER 1</div>
+            <div id="score-player-1" class="mb-3">0</div>
+            <div
+              class="current-wrapper d-flex flex-column justify-content-center align-items-center mb-4 py-2 py-md-3"
+            >
+              <div class="current-label">CURRENT</div>
+              <div id="current-score-p1">0</div>
             </div>
           </div>
-          <div id="roll-action" class="mb-3">
-            <span
-              ><i id="roll-action__btn" class="bi bi-arrow-repeat pe-1"></i
-            ></span>
-            ROLL DICE
-          </div>
-          <div id="hold-action" class="pt-3">
-            <span
-              ><i id="hold-action__btn" class="bi bi-box-arrow-in-down pe-1"></i
-            ></span>
-            HOLD
-          </div>
-        </div>
-        <div
-          class="col-6 col-sm-4 d-flex flex-column justify-content-center align-items-center"
-        >
-          <div id="label-player-2">PLAYER 2</div>
-          <div id="score-player-2" class="mb-5">0</div>
           <div
-            class="current-wrapper d-flex flex-column justify-content-center align-items-center"
+            class="order-1 order-sm-0 col-12 col-sm-4 flex-column text-center"
           >
-            <div class="current-label">CURRENT</div>
-            <div id="current-score-p2">0</div>
+            <div id="dice-wrapper" class="my-5 mx-auto">
+              <div class="dice mx-auto">
+                <div class="dice__face dice__face--1">
+                  <img src="images/dice-1.svg" alt="face 1 du dé" srcset="" />
+                </div>
+                <div class="dice__face dice__face--2">
+                  <img src="images/dice-2.svg" alt="face 2 du dé" srcset="" />
+                </div>
+                <div class="dice__face dice__face--3">
+                  <img src="images/dice-3.svg" alt="face 3 du dé" srcset="" />
+                </div>
+                <div class="dice__face dice__face--4">
+                  <img src="images/dice-4.svg" alt="face 4 du dé" srcset="" />
+                </div>
+                <div class="dice__face dice__face--5">
+                  <img src="images/dice-5.svg" alt="face 5 du dé" srcset="" />
+                </div>
+                <div class="dice__face dice__face--6">
+                  <img src="images/dice-6.svg" alt="face 6 du dé" srcset="" />
+                </div>
+              </div>
+            </div>
+            <div id="roll-action" class="mb-3">
+              <span
+                ><i id="roll-action__btn" class="bi bi-arrow-repeat pe-1"></i
+              ></span>
+              ROLL DICE
+            </div>
+            <div id="hold-action" class="pt-3">
+              <span
+                ><i
+                  id="hold-action__btn"
+                  class="bi bi-box-arrow-in-down pe-1"
+                ></i
+              ></span>
+              HOLD
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <!-- <div id="myModal"></div> -->
-    <!-- <button
-      type="button"
-      class="btn btn-primary"
-      data-bs-toggle="modal"
-      data-bs-target="#staticBackdrop"
-    >
-      Launch static backdrop modal
-    </button> -->
-    <div
-      class="modal fade"
-      id="staticBackdrop"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content bg-dark">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">
-              CONGRATULATIONS
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div id="modal-mess" class="modal-body text-white"></div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
+          <div
+            id="wrapper-player-2"
+            class="col-6 col-sm-4 d-flex flex-column justify-content-center align-items-center"
+          >
+            <div id="label-player-2" class="mt-3">PLAYER 2</div>
+            <div id="score-player-2" class="mb-3">0</div>
+            <div
+              class="current-wrapper d-flex flex-column justify-content-center align-items-center mb-4 py-2 py-md-3"
             >
-              Close
-            </button>
+              <div class="current-label">CURRENT</div>
+              <div id="current-score-p2">0</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <!-- <div id="myModal"></div> -->
+      <!-- <button
+  type="button"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#staticBackdrop"
+  >
+  Launch static backdrop modal
+</button> -->
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content bg-dark">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">
+                CONGRATULATIONS
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div id="modal-mess" class="modal-body text-white"></div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
