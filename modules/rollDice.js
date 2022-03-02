@@ -19,13 +19,15 @@ export default function rollDice() {
     if (diceValue === 1) {
       visibleFaceDice.style.border = "2px solid red";
       visibleFaceDice.style.boxShadow =
-        "0 0 150px rgb(255, 0, 0),0 0 75px rgb(255, 0, 0), 0 0 25px rgb(255, 0, 0)";
+        "0 0 150px rgb(255, 0, 0), 0 0 100px rgb(255, 0, 0), 0 0 50px rgba(255, 0, 0, 0.8)";
+      // "0 0 180px rgb(255, 0, 0),0 0 100px rgb(255, 0, 0)";
     } else {
       visibleFaceDice.style.border = "2px solid green";
       visibleFaceDice.style.boxShadow =
-        "0 0 150px rgb(0, 255, 0), 0 0 75px rgb(0, 255, 0),  0 0 25px rgb(255, 0, 0)";
+        // "0 0 150px rgb(0, 255, 0), 0 0 75px rgb(0, 255, 0),  0 0 25px rgb(255, 0, 0)";
+        "0 0 150px rgb(0, 255, 0), 0 0 100px rgb(0, 255, 0),  0 0 50px rgb(255, 0, 0)";
     }
-  }, 300);
+  }, 850);
 
   return diceValue;
 }

@@ -1,5 +1,5 @@
-// Function used to visualize the player round by changing bg of body
-// + changing styles of label and round score
+// Function used to visualize the player round by changing
+// styles of label player and round score
 export default function displayActivePlayer(
   player1,
   player2,
@@ -10,8 +10,8 @@ export default function displayActivePlayer(
   const labelPlayer1 = document.querySelector("#label-player-1");
   const labelPlayer2 = document.querySelector("#label-player-2");
 
-  // Timemout of dice animation added (min 550ms)
-  const tmpTimeOut = isBeginningGame ? 200 : 600;
+  // Added delay 300ms according to dice rolling
+  const tmpTimeOut = isBeginningGame ? 100 : 300;
   setTimeout(() => {
     if (player1.isPlaying) {
       wrapperPlayer1.classList.add("player-active");
