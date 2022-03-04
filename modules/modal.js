@@ -9,27 +9,20 @@ export default function displayModal(player1, player2) {
     keyboard: false,
   });
 
-  // Init remove all active led
-  groupLedP1.forEach((led) => led.classList.remove("active"));
-  groupLedP2.forEach((led) => led.classList.remove("active"));
-
   // Return nb led should be active
   const nbActiveLedP1 = Math.trunc(player1.totalScore / 5);
   const nbActiveLedP2 = Math.trunc(player2.totalScore / 5);
 
-  // Set active class for group led
+  // Init by removing all active led & Set active class for each group leds
   groupLedP1.forEach((led, index) => {
+    led.classList.remove("active");
     index < nbActiveLedP1 && led.classList.add("active");
   });
-
   groupLedP2.forEach((led, index) => {
+    led.classList.remove("active");
     index < nbActiveLedP2 && led.classList.add("active");
   });
 
-  // Set messages inside modal
-  // modalTitle.textContent = `${
-  //   player1.isTheWinner() ? "PLAYER 1" : "PLAYER 2"
-  // } WIN !!!`;
   modalTitle.textContent = `${
     player1.isTheWinner() ? "PLAYER 1" : "PLAYER 2"
   } WINS !`;

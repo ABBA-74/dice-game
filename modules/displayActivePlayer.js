@@ -1,5 +1,5 @@
-// Function used to visualize the player round by changing
-// styles of label player and round score
+// Function used to add/remove active class for the visualization of
+// the player round
 export default function displayActivePlayer(
   player1,
   player2,
