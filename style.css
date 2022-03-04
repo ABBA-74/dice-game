@@ -288,6 +288,7 @@ div[class*=" dice__face"] {
 }
 
 /* //////////////////// MEDIA QUERY SCREEN //////////////////// */
+/* Small devices (landscape phones, 576px and up) */
 @media screen and (min-width: 568px) {
   #new-game-action,
   #roll-action,
@@ -306,7 +307,7 @@ div[class*=" dice__face"] {
     font-size: 2.5rem;
   }
 }
-
+/* Medium devices (tablets, 768px and up) */
 @media screen and (min-width: 768px) {
   h1 {
     font-size: 3.8rem !important;
@@ -318,6 +319,20 @@ div[class*=" dice__face"] {
   #score-player-1,
   #score-player-2 {
     font-size: 4rem;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media screen and (min-width: 992px) {
+  #modal-title {
+    transform: translate(-25rem, 0);
+    animation: animTitleModal 1s forwards 1.2s
+      cubic-bezier(0.17, 0.67, 0.78, 1.61);
+  }
+  @keyframes animTitleModal {
+    to {
+      transform: translate(0, 0);
+    }
   }
 }
 /* //////////////////// MODAL + SCORES DISPLAY LEDS //////////////////// */
@@ -339,16 +354,7 @@ div[class*=" dice__face"] {
 #modal-title {
   font-size: 1.3rem;
   position: relative;
-  transform: translate(-25rem, 0);
   color: var(--color-yellow);
-  animation: animTitleModal 1s forwards 1.2s
-    cubic-bezier(0.17, 0.67, 0.78, 1.61);
-}
-
-@keyframes animTitleModal {
-  to {
-    transform: translate(0, 0);
-  }
 }
 
 #modal-mess-player1 > p,
